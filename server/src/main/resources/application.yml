@@ -10,8 +10,8 @@ spring:
   datasource:
 #    initialization-mode: never
 #    name: test
-    url: jdbc:mysql://127.0.0.1:3306/tech_salary
-#    url: jdbc:mysql://db:3306/tech_salary
+#    url: jdbc:mysql://127.0.0.1:3306/tech_salary
+    url: jdbc:mysql://db:3306/tech_salary
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver

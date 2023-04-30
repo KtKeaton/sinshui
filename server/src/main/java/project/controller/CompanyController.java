@@ -30,15 +30,6 @@ public class CompanyController {
         return companyService.findAllCompanyNames();
     }
 
-    @Operation(
-            summary = "Get All Company Names",
-            description = "Get All Company Names.",
-            tags = {"company", "get"})
-    @GetMapping("/companies2")
-    public List<String> getAllCompanyNames2() {
-        return companyService.findAllCompanyNames();
-    }
-
 }
 
 

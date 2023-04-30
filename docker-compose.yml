@@ -1,0 +1,60 @@
+version: '3.8'
+services:
+  db:
+    image: mysql
+    command: [
+      '--default-authentication-plugin=mysql_native_password',
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_unicode_ci'
+    ]
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: tech_salary
+      MYSQL_USER: springboot
+      MYSQL_PASSWORD: springboot
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./server/setting/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./server/setting/db/init_data.sql:/docker-entrypoint-initdb.d/init_data.sql
+#      - ./server/mysql/data:/var/lib/mysql #留下數據，就算container關了還是有資料存在
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping", "-h", "localhost" ]
+      interval: 5s
+      timeout: 30s
+      retries: 10
+    networks:
+      - backend
+  sinshui:
+    build:
+      context: ./server/
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: "service_healthy"
+    networks:
+      - backend
+    environment:
+      JARFILE : TechSalary-0.0.1.jar
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 3s
+        max_attempts: 3
+        window: 60s
+    volumes:
+      - ./server/log:/usr/app/log #留下log，就算container關了還是有資料存在
+#  redis:
+#    image: redis
+#    restart: always
+#    ports:
+#      - "6379:6379"
+#    volumes:
+#      - redis_data:/data
+
+networks:
+  backend:
+    driver: bridge

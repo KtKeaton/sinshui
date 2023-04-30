@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+<!--    <include resource="org/springframework/boot/logging/logback/base.xml" />-->
+
+    <springProperty scope="context" name="APP_NAME" source="spring.application.name"/>
+    <property name="app.name" value="${APP_NAME}"/>
+    <property name="CONSOLE_LOG_CHARSET" value="utf8"/>
+    <property name="TRACE_LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${app.name}] %highlight(%-5level) [%t] %cyan([%c{1}]) [%X{TRACE_ID}] - %m%n"/>
+    <property name="FILE_LOG_PATTERN" value="[%d{yyyy-MM-dd HH:mm:ss.SSS}] [${app.name}] %-5level [%t] [%c{1}] [%X{TRACE_ID}] - %m%n"/>
+
+    <!-- 設計日誌內容格式 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <charset>${CONSOLE_LOG_CHARSET}</charset>
+            <pattern>${TRACE_LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 定義以檔案保留日誌 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>./log/project.log</File>
+        <encoder>
+            <!-- 日誌寫檔僅保留關鍵字，無法定義顏色 -->
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 將日誌以日期來命名 -->
+            <fileNamePattern>./log/project.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!--  保留30天日誌 -->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <!-- 設定要被日誌紀錄下的等級 -->
+    <root level="info">
+        <!-- 連接到名為STDOUT的日誌格式 -->
+        <appender-ref ref="CONSOLE" />
+        <!-- 連接到名為FILE的日誌格式 -->
+        <appender-ref ref="FILE" />
+    </root>
+
+    <logger name="org.springframework.web" level="WARN"/>
+    <logger name="org.apache.http" level="INFO"/>
+    <logger name="httpclient.wire.header" level="INFO"/>
+    <logger name="httpclient.wire.content" level="INFO"/>
+
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder" additivity="false" level="TRACE" >
+        <level value="TRACE" />
+        <appender-ref ref="CONSOLE" />
+    </logger>
+</configuration>
+

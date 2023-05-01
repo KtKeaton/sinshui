@@ -8,7 +8,7 @@ import project.model.PositionDetail;
 @Mapper
 public interface PositionDetailMapper {
     @Mapping(target = "company", ignore = true)
-    @Mapping(target = "positionType", ignore = true)
-    @Mapping(target = "positionLevel", ignore = true)
+    @Mapping(target = "position", ignore = true)
+    @Mapping(target = "timestamp", ignore = true)
     PositionDetail requestDataToModel(PositionDetailCreateRequestData positionDetailCreateRequestData);
 }

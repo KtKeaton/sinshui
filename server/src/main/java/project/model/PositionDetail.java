@@ -6,7 +6,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.*;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "position_detail")
@@ -24,24 +24,20 @@ public class PositionDetail extends BaseModel {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @ToString.Exclude
-    private PositionType positionType;
+    private Position position;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @ToString.Exclude
-    private PositionLevel positionLevel;
-
-    private String positionTitle;
-    private String techniques;
-    private String notes;
-    private LocalDate markTime;
-    private int relateSeniority;
-    private int currentSeniority;
-    private int monthlySalary;
-    private int bonusMoney;
-    private int annualSalary;
-    private int dailyWorkHour;
-    private int workLoadSatisfaction;
-    private int emotionalSatisfaction;
-    private int workOvertimeSatisfaction;
+    private String jobLevel;
+    private String relevantExperience;
+    private String currentTenure;
+    private String monthlyBaseSalary;
+    private String monthlyBonus;
+    private String totalAnnualCompensation;
+    private String dailyAverageWorkingHours;
+    private Integer overtimeFrequency;
+    private Integer loading;
+    private Integer jobSatisfaction;
+    private String supplement;
+    private String monthlyOvertime;
+    private LocalDateTime timestamp;
 
 }

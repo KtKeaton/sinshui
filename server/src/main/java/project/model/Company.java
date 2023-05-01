@@ -1,9 +1,6 @@
 package project.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
@@ -20,14 +17,13 @@ import java.util.Set;
 public class Company extends BaseModel {
     private String companyName;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    private CompanyType companyType;
+
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
     @ToString.Exclude
     Set<PositionDetail> positionDetails;
-
-    public void addPositionDetail(PositionDetail positionDetail) {
-        positionDetails.add(positionDetail);
-        positionDetail.setCompany(this);
-    }
 
     public static CompanyBuilder builder() {
         return new CustomCompanyBuilder();

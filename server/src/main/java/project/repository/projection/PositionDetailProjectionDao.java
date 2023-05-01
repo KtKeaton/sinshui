@@ -10,25 +10,23 @@ import project.model.PositionDetail;
 public interface PositionDetailProjectionDao extends JpaRepository<PositionDetail, Long> {
 
     @Query(value = "SELECT " +
-            "pd.annualSalary AS annualSalary, " +
             "c.companyName AS companyName, " +
-            "pt.positionTypeName AS positionType, " +
-            "pl.positionLevelName AS positionLevel, " +
-            "pd.positionTitle AS positionTitle, " +
-            "pd.techniques AS techniques, " +
-            "pd.notes AS notes, " +
-            "pd.markTime AS markTime, " +
-            "pd.relateSeniority AS relateSeniority, " +
-            "pd.currentSeniority AS currentSeniority, " +
-            "pd.monthlySalary AS monthlySalary, " +
-            "pd.bonusMoney AS bonusMoney, " +
-            "pd.dailyWorkHour AS dailyWorkHour, " +
-            "pd.workLoadSatisfaction AS workLoadSatisfaction, " +
-            "pd.emotionalSatisfaction AS emotionalSatisfaction, " +
-            "pd.workOvertimeSatisfaction AS workOvertimeSatisfaction " +
+            "pl.positionName AS position, " +
+            "pd.jobLevel AS jobLevel, " +
+            "pd.relevantExperience AS relevantExperience, " +
+            "pd.currentTenure AS currentTenure, " +
+            "pd.monthlyBaseSalary AS monthlyBaseSalary, " +
+            "pd.monthlyBonus AS monthlyBonus, " +
+            "pd.totalAnnualCompensation AS totalAnnualCompensation, " +
+            "pd.dailyAverageWorkingHours AS dailyAverageWorkingHours, " +
+            "pd.overtimeFrequency AS overtimeFrequency, " +
+            "pd.loading AS loading, " +
+            "pd.jobSatisfaction AS jobSatisfaction, " +
+            "pd.supplement AS supplement, " +
+            "pd.monthlyOvertime AS monthlyOvertime, " +
+            "pd.timestamp AS timestamp " +
             "FROM PositionDetail pd " +
             "JOIN pd.company c " +
-            "JOIN pd.positionLevel pl " +
-            "JOIN pd.positionType pt")
+            "JOIN pd.position pl ")
     Page<PositionDetailProjectionData> getAllPositionDetails(Pageable pageable);
 }

@@ -1,77 +1,73 @@
 package project.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
-
-import java.time.LocalDate;
 
 @Data
 @Builder
 @Schema(description = "request data")
+@JsonIgnoreProperties(ignoreUnknown = true)
+@AllArgsConstructor
+@NoArgsConstructor
 public class PositionDetailCreateRequestData {
 
     @NotEmpty(message = "company name cannot be empty")
     private String companyName;
 
-    @NotEmpty(message = "position type cannot be empty")
-    private String positionType;
+    @NotEmpty(message = "position cannot be empty")
+    private String position;
 
-    @NotEmpty(message = "position level cannot be empty")
-    private String positionLevel;
+    @NotEmpty(message = "job level cannot be empty")
+    private String jobLevel;
 
-    @NotEmpty(message = "position title cannot be empty")
-    private String positionTitle;
+//    @Min(value = 0, message = "relevant experience must be greater or equal to 0")
+    @NotNull(message = "relevant experience cannot be null")
+    private String relevantExperience;
 
-    @Schema(nullable = true)
-    private String techniques;
+//    @Min(value = 0, message = "current tenure must be greater or equal to 0")
+    @NotNull(message = "current tenure cannot be null")
+    private String currentTenure;
 
-    @Schema(nullable = true)
-    private String notes;
+//    @Min(value = 0, message = "monthly base salary must be greater or equal to 0")
+    @NotNull(message = "monthly base salary cannot be null")
+    private String monthlyBaseSalary;
 
-    @NotNull(message = "mark time cannot be null")
-    private LocalDate markTime;
+    @NotNull(message = "monthly bonus cannot be null")
+    private String monthlyBonus;
 
-    @Min(value = 0, message = "relate seniority must be greater or equal to 0")
-    @NotNull(message = "relateSeniority cannot be null")
-    private Integer relateSeniority;
+//    @Min(value = 0, message = "total annual compensation must be greater or equal to 0")
+    @NotNull(message = "total annual compensation cannot be null")
+    private String totalAnnualCompensation;
 
-    @Min(value = 0, message = "current seniority must be greater or equal to 0")
-    @NotNull(message = "currentSeniority cannot be null")
-    private Integer currentSeniority;
+//    @Min(value = 0, message = "daily average working hours must be greater or equal to 0")
+    @NotNull(message = "daily average working hours cannot be null")
+    private String dailyAverageWorkingHours;
 
-    @Min(value = 0, message = "monthly salary must be greater or equal to 0")
-    @NotNull(message = "monthlySalary cannot be null")
-    private Integer monthlySalary;
+    @Range(min = 1, max = 5, message = "overtime frequency must be between 1 and 5")
+    @NotNull(message = "overtime frequency cannot be null")
+    private Integer overtimeFrequency;
 
-    @Min(value = 0, message = "bonus money must be greater or equal to 0")
-    @NotNull(message = "bonusMoney cannot be null")
-    private Integer bonusMoney;
+    @Range(min = 1, max = 5, message = "loading must be between 1 and 5")
+    @NotNull(message = "loading cannot be null")
+    private Integer loading;
 
-    @Min(value = 0, message = "annual salary must be greater or equal to 0")
-    @NotNull(message = "annualSalary cannot be null")
-    private Integer annualSalary;
+    @Range(min = 1, max = 5, message = "job satisfaction must be between 1 and 5")
+    @NotNull(message = "job satisfaction cannot be null")
+    private Integer jobSatisfaction;
 
-    @Min(value = 0, message = "daily work hour must be greater or equal to 0")
-    @NotNull(message = "dailyWorkHour cannot be null")
-    private Integer dailyWorkHour;
+    private String supplement;
 
-    @Range(min = 1, max = 5, message
-            = "work load satisfaction must be between 1 and 5")
-    @NotNull(message = "workLoadSatisfaction cannot be null")
-    private Integer workLoadSatisfaction;
+    @NotNull(message = "monthly overtime cannot be null")
+    private String monthlyOvertime;
 
-    @Range(min = 1, max = 5, message
-            = "emotional satisfaction must be between 1 and 5")
-    @NotNull(message = "emotionalSatisfaction cannot be null")
-    private Integer emotionalSatisfaction;
+    @NotNull(message = "timestamp cannot be null")
+    private String timestamp;
 
-    @Range(min = 1, max = 5, message
-            = "work over time satisfaction must be between 1 and 5")
-    @NotNull(message = "workOvertimeSatisfaction cannot be null")
-    private Integer workOvertimeSatisfaction;
 }

@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface MainService {
 
-    List<PositionDetail> createPositionDetail(List<PositionDetailCreateRequestData> positionDetailCreateRequestDataList);
+    List<PositionDetail> createPositionDetailWithApi(List<PositionDetailCreateRequestData> positionDetailCreateRequestDataList);
+
+    PositionDetail createPositionDetailWithFile(PositionDetailCreateRequestData positionDetailCreateRequestData);
 }

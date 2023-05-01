@@ -11,4 +11,6 @@ public interface CompanyService {
     List<String> findAllCompanyNames();
 
     Company createCompany(String companyName);
+
+    List<Company> createCompanies(List<String> companyNames);
 }

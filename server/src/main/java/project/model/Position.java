@@ -10,30 +10,25 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "position_type")
+@Table(name = "position")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public class PositionType extends BaseModel {
-    private String positionTypeName;
+public class Position extends BaseModel {
+    private String positionName;
 
-    @OneToMany(mappedBy = "positionType", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "position", fetch = FetchType.LAZY)
     @ToString.Exclude
     Set<PositionDetail> positionDetails;
 
-    public void addPositionDetail(PositionDetail positionDetail) {
-        positionDetails.add(positionDetail);
-        positionDetail.setPositionType(this);
+    public static PositionBuilder builder() {
+        return new CustomPositionBuilder();
     }
-
-    public static PositionTypeBuilder builder() {
-        return new CustomPositionTypeBuilder();
-    }
-    private static class CustomPositionTypeBuilder extends PositionTypeBuilder {
+    private static class CustomPositionBuilder extends PositionBuilder {
         @Override
-        public PositionType build() {
+        public Position build() {
             if (super.positionDetails == null) {
                 super.positionDetails = new HashSet<>();
             }

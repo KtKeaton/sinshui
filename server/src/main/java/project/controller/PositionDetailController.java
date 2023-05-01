@@ -33,7 +33,7 @@ public class PositionDetailController {
             tags = {"position detail", "post"})
     @PostMapping("/position_details")
     public void createPositionDetails(@RequestBody List<@Valid PositionDetailCreateRequestData> datas) {
-        mainService.createPositionDetail(datas);
+        mainService.createPositionDetailWithApi(datas);
     }
 
     @Operation(
@@ -45,7 +45,7 @@ public class PositionDetailController {
             @RequestParam(defaultValue = "1") int pageNo,
             @RequestParam(defaultValue = "10") int pageSize,
             @Schema(defaultValue = "markTime:asc", description = "markTime:asc|desc")
-            @RequestParam(defaultValue = "markTime:asc") String sort
+            @RequestParam(defaultValue = "timestamp:asc") String sort
     ) {
         log.info("pageNo: [{}], pageSize: [{}], sort [{}]", pageNo, pageSize, sort);
         return positionDetailService.findPositionDetails(pageNo, pageSize, sort);

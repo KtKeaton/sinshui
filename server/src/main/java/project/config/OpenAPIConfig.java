@@ -12,9 +12,9 @@ import java.util.List;
 @Configuration
 public class OpenAPIConfig {
 
-  private final String devUrl = "https://prod:8080";
+  private final String devUrl = "http://localhost:8080";
 
-  private final String prodUrl = "http://localhost:8080";
+  private final String prodUrl = "https://swag.sinshui.com";
 
   @Bean
   public OpenAPI myOpenAPI() {
@@ -29,13 +29,13 @@ public class OpenAPIConfig {
     Contact contact = new Contact();
     contact.setEmail("Email");
     contact.setName("Name");
-    contact.setUrl("URL");
+    contact.setUrl("https://github.com/zhong1016/sinshui");
 
     Info info = new Info()
-        .title("Project API")
+        .title("SinShui API")
         .version("1.0")
         .contact(contact)
-        .description("This API exposes endpoints to manage tutorials.");
+        .description("SinShui API.");
 
     return new OpenAPI().info(info).servers(List.of(devServer, prodServer));
   }

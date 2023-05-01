@@ -1,22 +1,36 @@
 package project.data.projection;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public interface PositionDetailProjectionData {
+
     String getCompanyName();
-    String getPositionType();
-    String getPositionLevel();
-    String getPositionTitle();
-    String getTechniques();
-    String getNotes();
-    LocalDate getMarkTime();
-    Integer getRelateSeniority();
-    Integer getCurrentSeniority();
-    Integer getMonthlySalary();
-    Integer getBonusMoney();
-    Integer getAnnualSalary();
-    Integer getDailyWorkHour();
-    Integer getWorkLoadSatisfaction();
-    Integer getEmotionalSatisfaction();
-    Integer getWorkOvertimeSatisfaction();
+
+    String getPosition();
+
+    String getJobLevel();
+
+    String getRelevantExperience();
+
+    String getCurrentTenure();
+
+    String getMonthlyBaseSalary();
+
+    String getMonthlyBonus();
+
+    String getTotalAnnualCompensation();
+
+    String getDailyAverageWorkingHours();
+
+    Integer getOvertimeFrequency();
+
+    Integer getLoading();
+
+    Integer getJobSatisfaction();
+
+    String getSupplement();
+
+    String getMonthlyOvertime();
+
+    LocalDateTime getTimestamp();
 }

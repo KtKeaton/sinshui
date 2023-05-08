@@ -4,6 +4,6 @@
     <div class="w-1/2">
       <p class="text-2xl font-bold h-full flex items-center">SinShui</p>
     </div>
-    <div class="w-1/2">2</div>
+    <div class="w-1/2"></div>
   </header>
 </template>

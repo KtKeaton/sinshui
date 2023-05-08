@@ -14,5 +14,10 @@
     "@types/node": "^18",
     "element-plus": "^2.3.4",
     "nuxt": "^3.4.3"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.1.0",
+    "@pinia/nuxt": "^0.4.9",
+    "pinia": "^2.0.35"
   }
 }

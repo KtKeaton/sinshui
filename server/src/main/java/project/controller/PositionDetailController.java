@@ -44,11 +44,12 @@ public class PositionDetailController {
     public PageResponseData<PositionDetailProjectionData> getAllPositionDetails(
             @RequestParam(defaultValue = "1") int pageNo,
             @RequestParam(defaultValue = "10") int pageSize,
+            @RequestParam String companyType,
             @Schema(defaultValue = "markTime:asc", description = "markTime:asc|desc")
             @RequestParam(defaultValue = "timestamp:asc") String sort
     ) {
-        log.info("pageNo: [{}], pageSize: [{}], sort [{}]", pageNo, pageSize, sort);
-        return positionDetailService.findPositionDetails(pageNo, pageSize, sort);
+        log.info("pageNo: [{}], pageSize: [{}], sort [{}], companyType [{}]", pageNo, pageSize, sort, companyType);
+        return positionDetailService.findPositionDetails(pageNo, pageSize, sort, companyType);
     }
 
 }

@@ -8,6 +8,6 @@ public interface PositionDetailService {
 
     PositionDetail createPositionDetail(PositionDetail positionDetail);
 
-    PageResponseData<PositionDetailProjectionData> findPositionDetails(int pageNo, int pageSize, String sort);
+    PageResponseData<PositionDetailProjectionData> findPositionDetails(int pageNo, int pageSize, String sort, String companyType);
 
 }

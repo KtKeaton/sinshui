@@ -2,6 +2,7 @@ package project.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,9 @@ import org.hibernate.validator.constraints.Range;
 @NoArgsConstructor
 public class PositionDetailCreateRequestData {
 
+    @NotEmpty(message = "company type cannot be empty")
+    private String companyType;
+
     @NotEmpty(message = "company name cannot be empty")
     private String companyName;
 
@@ -27,28 +31,28 @@ public class PositionDetailCreateRequestData {
     @NotEmpty(message = "job level cannot be empty")
     private String jobLevel;
 
-//    @Min(value = 0, message = "relevant experience must be greater or equal to 0")
+    @Min(value = 0, message = "relevant experience must be greater or equal to 0")
     @NotNull(message = "relevant experience cannot be null")
-    private String relevantExperience;
+    private Double relevantExperience;
 
-//    @Min(value = 0, message = "current tenure must be greater or equal to 0")
+    @Min(value = 0, message = "current tenure must be greater or equal to 0")
     @NotNull(message = "current tenure cannot be null")
-    private String currentTenure;
+    private Double currentTenure;
 
-//    @Min(value = 0, message = "monthly base salary must be greater or equal to 0")
+    @Min(value = 0, message = "monthly base salary must be greater or equal to 0")
     @NotNull(message = "monthly base salary cannot be null")
-    private String monthlyBaseSalary;
+    private Double monthlyBaseSalary;
 
     @NotNull(message = "monthly bonus cannot be null")
     private String monthlyBonus;
 
-//    @Min(value = 0, message = "total annual compensation must be greater or equal to 0")
+    @Min(value = 0, message = "total annual compensation must be greater or equal to 0")
     @NotNull(message = "total annual compensation cannot be null")
-    private String totalAnnualCompensation;
+    private Double totalAnnualCompensation;
 
-//    @Min(value = 0, message = "daily average working hours must be greater or equal to 0")
+    @Min(value = 0, message = "daily average working hours must be greater or equal to 0")
     @NotNull(message = "daily average working hours cannot be null")
-    private String dailyAverageWorkingHours;
+    private Double dailyAverageWorkingHours;
 
     @Range(min = 1, max = 5, message = "overtime frequency must be between 1 and 5")
     @NotNull(message = "overtime frequency cannot be null")

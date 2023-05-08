@@ -8,6 +8,7 @@ public enum ResponseCode {
     COMPANY_NAME_DUPLICATE_ERROR(604),
     POSITION_DUPLICATE_ERROR(605),
     CONSTRAINT_VIOLATION_ERROR(606),
+    COMPANY_TYPE_NOT_FOUND_ERROR(607),
     ;
 
     private final int code;

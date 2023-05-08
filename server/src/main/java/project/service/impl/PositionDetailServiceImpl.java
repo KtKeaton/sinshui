@@ -30,9 +30,9 @@ public class PositionDetailServiceImpl implements PositionDetailService {
 
     @Override
     @Transactional(readOnly = true)
-    public PageResponseData<PositionDetailProjectionData> findPositionDetails(int pageNo, int pageSize, String sort) {
+    public PageResponseData<PositionDetailProjectionData> findPositionDetails(int pageNo, int pageSize, String sort, String companyType) {
         Pageable pageable = PageUtil.getPageable(pageNo, pageSize, sort);
-        Page<PositionDetailProjectionData> dataPages = positionDetailProjectionDao.getAllPositionDetails(pageable);
+        Page<PositionDetailProjectionData> dataPages = positionDetailProjectionDao.getAllPositionDetails(companyType, pageable);
         return PageResponseData.response(dataPages);
     }
 }

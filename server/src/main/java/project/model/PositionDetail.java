@@ -27,12 +27,12 @@ public class PositionDetail extends BaseModel {
     private Position position;
 
     private String jobLevel;
-    private String relevantExperience;
-    private String currentTenure;
-    private String monthlyBaseSalary;
+    private Double relevantExperience;
+    private Double currentTenure;
+    private Double monthlyBaseSalary;
     private String monthlyBonus;
-    private String totalAnnualCompensation;
-    private String dailyAverageWorkingHours;
+    private Double totalAnnualCompensation;
+    private Double dailyAverageWorkingHours;
     private Integer overtimeFrequency;
     private Integer loading;
     private Integer jobSatisfaction;

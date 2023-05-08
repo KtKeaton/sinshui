@@ -10,36 +10,36 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import project.data.CompanyCreateRequestData;
-import project.service.CompanyService;
+import project.data.CompanyTypeData;
+import project.service.CompanyTypeService;
 
 import java.util.List;
 
 @RestController
 @Slf4j
 @RequiredArgsConstructor
-@Tag(name = "Company Controller", description = "APIs for Company")
+@Tag(name = "Company Type Controller", description = "APIs for Company Type")
 @Validated
-public class CompanyController {
+public class CompanyTypeController {
 
-    private final CompanyService companyService;
+    private final CompanyTypeService companyTypeService;
 
     @Operation(
             summary = "Get All Company Names",
             description = "Get All Company Names.",
             tags = {"company", "get"})
-    @GetMapping("/companies")
-    public List<String> getAllCompanyNames() {
-        return companyService.findAllCompanyNames();
+    @GetMapping("/company_types")
+    public List<CompanyTypeData> getAllCompanyTypes() {
+        return companyTypeService.getAllCompanyTypeDataList();
     }
 
     @Operation(
             summary = "Create Companies",
             description = "Create Companies.",
             tags = {"company", "post"})
-    @PostMapping("/companies")
-    public void createCompanies(@RequestBody List<CompanyCreateRequestData> companyNames) {
-        companyService.createCompanies(companyNames);
+    @PostMapping("/company_types")
+    public void createCompanies(@RequestBody List<CompanyTypeData> companyTypeRequestDataList) {
+        companyTypeService.createCompanyTypes(companyTypeRequestDataList);
     }
 
 }

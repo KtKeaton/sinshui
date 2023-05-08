@@ -1,6 +1,8 @@
 package project.service;
 
+import project.data.CompanyCreateRequestData;
 import project.model.Company;
+import project.model.CompanyType;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +12,7 @@ public interface CompanyService {
 
     List<String> findAllCompanyNames();
 
-    Company createCompany(String companyName);
+    Company createCompany(String companyName, CompanyType companyType);
 
-    List<Company> createCompanies(List<String> companyNames);
+    List<Company> createCompanies(List<CompanyCreateRequestData> companyNames);
 }

@@ -50,7 +50,7 @@ public class FileRunner implements ApplicationRunner {
                         try {
                             mainService.createPositionDetailWithFile(positionDetailCreateRequestData);
                         } catch (Exception e) {
-                            log.error("column error : {}", e.getMessage());
+                            log.error("column error : {}, with data: {}", e.getMessage(), positionDetailCreateRequestData);
                         }
                     }
                 }

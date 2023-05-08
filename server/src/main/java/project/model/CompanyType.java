@@ -19,6 +19,7 @@ import java.util.Set;
 @Setter
 public class CompanyType extends BaseModel {
     private String typeName;
+    private String label;
 
     @OneToMany(mappedBy = "companyType", fetch = FetchType.LAZY)
     @ToString.Exclude

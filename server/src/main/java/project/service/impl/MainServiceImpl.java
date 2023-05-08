@@ -9,6 +9,7 @@ import project.enums.ResponseCode;
 import project.exception.GlobalRuntimeException;
 import project.mapper.PositionDetailMapper;
 import project.model.Company;
+import project.model.CompanyType;
 import project.model.PositionDetail;
 import project.model.Position;
 import project.service.*;
@@ -22,6 +23,7 @@ import java.util.Locale;
 @Service
 @RequiredArgsConstructor
 public class MainServiceImpl implements MainService {
+    private final CompanyTypeService companyTypeService;
     private final CompanyService companyService;
     private final PositionService positionService;
     private final PositionDetailService positionDetailService;
@@ -55,11 +57,13 @@ public class MainServiceImpl implements MainService {
     @Override
     @Transactional
     public PositionDetail createPositionDetailWithFile(PositionDetailCreateRequestData positionDetailCreateRequestData) {
+        CompanyType companyType = companyTypeService.getOrCreateCompanyType(positionDetailCreateRequestData.getCompanyType().trim());
+
         Position position = positionService.findPositionByPositionName(positionDetailCreateRequestData.getPosition())
                 .orElseGet(() -> positionService.createPosition(positionDetailCreateRequestData.getPosition()));
 
         Company company = companyService.findCompanyByCompanyName(positionDetailCreateRequestData.getCompanyName().trim())
-                .orElseGet(() -> companyService.createCompany(positionDetailCreateRequestData.getCompanyName().trim()));
+                .orElseGet(() -> companyService.createCompany(positionDetailCreateRequestData.getCompanyName().trim(), companyType));
 
         PositionDetail positionDetail = positionDetailMapper.requestDataToModel(positionDetailCreateRequestData);
         positionDetail.setPosition(position);

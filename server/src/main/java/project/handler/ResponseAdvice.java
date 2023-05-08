@@ -26,14 +26,15 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
     public boolean supports(MethodParameter methodParameter, Class<? extends HttpMessageConverter<?>> aClass) {
         return true;
     }
+
     //处理返回结果
     @Override
     public Object beforeBodyWrite(Object o, MethodParameter methodParameter, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
         //处理字符串类型数据，如果Controller返回String的话，SpringBoot是直接返回.
         ResponseData<Object> response = ResponseData.response(ResponseCode.SUCCESS, o);
-        log.info("respone: {}", response);
-        if(o instanceof String){
+        if (o instanceof String) {
             try {
+//                log.info("respone: {}", objectMapper.writeValueAsString(response));
                 return objectMapper.writeValueAsString(response);
             } catch (JsonProcessingException e) {
                 e.printStackTrace();

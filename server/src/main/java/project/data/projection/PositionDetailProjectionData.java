@@ -10,17 +10,17 @@ public interface PositionDetailProjectionData {
 
     String getJobLevel();
 
-    String getRelevantExperience();
+    Double getRelevantExperience();
 
-    String getCurrentTenure();
+    Double getCurrentTenure();
 
-    String getMonthlyBaseSalary();
+    Double getMonthlyBaseSalary();
 
     String getMonthlyBonus();
 
-    String getTotalAnnualCompensation();
+    Double getTotalAnnualCompensation();
 
-    String getDailyAverageWorkingHours();
+    Double getDailyAverageWorkingHours();
 
     Integer getOvertimeFrequency();
 

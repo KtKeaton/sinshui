@@ -47,6 +47,7 @@ services:
         window: 60s
     volumes:
       - ./server/log:/usr/app/log #留下log，就算container關了還是有資料存在
+      - ./server/setting/json:/usr/app/setting/json
 #  redis:
 #    image: redis
 #    restart: always

@@ -12,16 +12,6 @@ INSERT  IGNORE INTO company_type (type_name, label)
             ('device', '設備商'),
             ('semiconductor', '非設計半導體');
 
-INSERT IGNORE INTO position (position_name)
-VALUES ('前端'),
-       ('後端'),
-       ('全端'),
-       ('測試'),
-       ('硬體'),
-       ('PM'),
-       ('主管'),
-       ('其他');
-
 
 
 

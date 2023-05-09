@@ -13,4 +13,8 @@ public class PageUtil {
         Sort.Direction direction = StringUtils.endsWithIgnoreCase(sortStr[1], "acs") ? Sort.Direction.ASC : Sort.Direction.DESC;
         return PageRequest.of(pageNo - 1, pageSize, Sort.by(direction, sortStr[0]));
     }
+
+    public static Pageable getPageable(int pageNo, int pageSize) {
+        return PageRequest.of(pageNo - 1, pageSize);
+    }
 }

@@ -1,50 +1,28 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-
-const checked = ref(false);
-
-const onChange = (status: boolean) => {
-  checked.value = status;
-};
+import { controlOptions } from './model';
+import { useControlStore } from '@/store/useControlStore';
+const store = useControlStore();
 </script>
 <template>
   <div class="h-10 flex flex-wrap border-b-[1px] border-stone-950/5">
     <div class="w-5/6">
       <ul class="flex h-full">
-        <li class="flex items-center">
-          <el-check-tag class="mx-4" :checked="checked" @change="onChange">
-            全部
-          </el-check-tag>
-        </li>
-        <li class="flex items-center">
-          <el-check-tag class="mx-4" :checked="checked" @change="onChange">
-            純軟
-          </el-check-tag>
-        </li>
-        <li class="flex items-center">
-          <el-check-tag class="mx-4" :checked="checked" @change="onChange">
-            豬屎屋
-          </el-check-tag>
-        </li>
-        <li class="flex items-center">
-          <el-check-tag class="mx-4" :checked="checked" @change="onChange">
-            系統廠
-          </el-check-tag>
-        </li>
-        <li class="flex items-center">
-          <el-check-tag class="mx-4" :checked="checked" @change="onChange">
-            化工化學
-          </el-check-tag>
-        </li>
-        <li class="flex items-center">
-          <el-check-tag class="mx-4" :checked="checked" @change="onChange">
-            設備商
-          </el-check-tag>
-        </li>
-        <li class="flex items-center">
-          <el-check-tag class="mx-4" :checked="checked" @change="onChange">
-            非設計半導體
-          </el-check-tag>
+        <li
+          class="flex items-center"
+          v-for="(control, index) in controlOptions"
+          :key="index"
+        >
+          <nuxt-link
+            :to="control.value === 'all' ? '/' : '/salary/' + control.value"
+          >
+            <el-check-tag
+              class="mx-4"
+              :checked="control.value === store.page"
+              @change="() => store.setPage(control.value)"
+            >
+              {{ control.label }}
+            </el-check-tag>
+          </nuxt-link>
         </li>
       </ul>
     </div>

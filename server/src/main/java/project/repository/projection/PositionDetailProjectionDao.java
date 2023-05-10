@@ -4,6 +4,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import project.data.projection.PositionDetailProjectionData;
 import project.model.PositionDetail;
 
@@ -32,5 +34,6 @@ public interface PositionDetailProjectionDao extends JpaRepository<PositionDetai
                 JOIN pd.position pl
             WHERE ct.typeName = :companyType
             """)
-    Page<PositionDetailProjectionData> getAllPositionDetails(String companyType, Pageable pageable);
+    Page<PositionDetailProjectionData> getAllPositionDetails(@Param("companyType") String companyType,
+            Pageable pageable);
 }

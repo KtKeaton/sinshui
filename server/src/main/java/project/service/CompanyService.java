@@ -11,6 +11,8 @@ public interface CompanyService {
     Optional<Company> findCompanyByCompanyName(String companyName);
 
     List<String> findAllCompanyNames();
+    
+    List<String> findByCompanyType(String companyType);
 
     Company createCompany(String companyName, CompanyType companyType);
 

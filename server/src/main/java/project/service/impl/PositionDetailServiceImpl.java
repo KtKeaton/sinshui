@@ -6,8 +6,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 import project.data.base.PageResponseData;
 import project.data.projection.PositionDetailProjectionData;
+import project.enums.CompanyTypeName;
 import project.model.PositionDetail;
 import project.repository.PositionDetailDao;
 import project.repository.projection.PositionDetailProjectionDao;
@@ -31,9 +33,14 @@ public class PositionDetailServiceImpl implements PositionDetailService {
     @Override
     @Transactional(readOnly = true)
     public PageResponseData<PositionDetailProjectionData> findPositionDetails(int pageNo, int pageSize, String sort, String companyType) {
-//        Pageable pageable = PageUtil.getPageable(pageNo, pageSize, sort);
-        Pageable pageable = PageUtil.getPageable(pageNo, pageSize);
-        Page<PositionDetailProjectionData> dataPages = positionDetailProjectionDao.getAllPositionDetails(companyType, pageable);
+        Pageable pageable = PageUtil.getPageable(pageNo, pageSize, sort);
+        Page<PositionDetailProjectionData> dataPages;
+        if (StringUtils.endsWithIgnoreCase(CompanyTypeName.ALL.getTypeName(), companyType)) {
+            dataPages = positionDetailProjectionDao.getAll(pageable);
+        } else {
+            dataPages = positionDetailProjectionDao.getAllPositionDetails(companyType, pageable);
+        }
+
         return PageResponseData.response(dataPages);
     }
 }

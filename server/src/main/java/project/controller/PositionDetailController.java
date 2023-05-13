@@ -44,8 +44,9 @@ public class PositionDetailController {
     public PageResponseData<PositionDetailProjectionData> getAllPositionDetails(
             @RequestParam(defaultValue = "1") int pageNo,
             @RequestParam(defaultValue = "10") int pageSize,
+            @Schema(description = "all|soft|design-house|system|chemical|device|semiconductor")
             @RequestParam String companyType,
-            @Schema(defaultValue = "markTime:asc", description = "markTime:asc|desc")
+            @Schema(defaultValue = "timestamp:asc", description = "timestamp:asc|desc")
             @RequestParam(defaultValue = "timestamp:asc") String sort
     ) {
         log.info("pageNo: [{}], pageSize: [{}], sort [{}], companyType [{}]", pageNo, pageSize, sort, companyType);

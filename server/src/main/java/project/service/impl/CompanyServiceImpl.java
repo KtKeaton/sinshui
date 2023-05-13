@@ -37,6 +37,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public List<String> findByCompanyType(String companyType) {
+        return companyDao.getByCompanyType(companyType).stream().map(Company::getCompanyName).toList();
+    }
+
+    @Override
     @Transactional
     public Company createCompany(String companyName, CompanyType companyType) {
         return companyDao.save(Company.builder()

@@ -27,6 +27,5 @@ build/
 *.njsproj
 *.sln
 *.sw*
-.output
 .env
 *.sh

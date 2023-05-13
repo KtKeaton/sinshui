@@ -1,0 +1,1 @@
+import{_ as o}from"./index.vue.ad222f8f.js";import{a as e,c as r,o as t}from"./entry.49cc2829.js";import"./nuxt-link.83b86ff6.js";import"./_plugin-vue_export-helper.c27b6911.js";const i=e({__name:"index",setup(a){return(n,_)=>(t(),r(o))}});export{i as default};

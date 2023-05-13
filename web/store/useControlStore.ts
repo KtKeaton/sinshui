@@ -4,7 +4,7 @@ export const useControlStore = defineStore({
   id: 'control',
   state: () => {
     return {
-      page: 'all',
+      page: 'soft',
     };
   },
   actions: {

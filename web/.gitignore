@@ -27,3 +27,5 @@ build/
 *.sln
 *.sw*
 .output
+.env
+*.sh

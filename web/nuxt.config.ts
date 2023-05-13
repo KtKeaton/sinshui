@@ -17,4 +17,9 @@ export default defineNuxtConfig({
       ],
     },
   },
+  runtimeConfig: {
+    public: {
+      base: '',
+    },
+  },
 });

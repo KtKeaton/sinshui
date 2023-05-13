@@ -1,6 +1,34 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { Result, useCompanyStore } from '@/store/useCompanyStore';
+import { useControlStore } from '@/store/useControlStore';
+
+const controlStore = useControlStore();
+const companyStore = useCompanyStore();
+
+const runtimeConfig = useRuntimeConfig();
+const { base } = runtimeConfig.public;
+
+const { data: lazyData } = await useFetch<Result>(
+  base +
+    '/position_details?pageNo=1&pageSize=50&companyType=' +
+    controlStore.page
+);
+
+const { data } = await useLazyFetch<Result>(
+  base +
+    '/position_details?pageNo=1&pageSize=999&companyType=' +
+    controlStore.page
+);
+console.log(data.value);
+</script>
 <template>
-  <el-table class="w-full" v-loading="false" :data="[]" border height="100%">
+  <el-table
+    class="w-full"
+    v-loading="false"
+    :data="lazyData?.data.list"
+    border
+    height="100%"
+  >
     <el-table-column
       align="center"
       fixed

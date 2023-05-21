@@ -400,7 +400,7 @@
   },
   {
     "timestamp": "2023/4/18 上午 2:12:03",
-    "companyName": "台塑南亞",
+    "companyName": "南亞塑膠",
     "nothing": "",
     "position": "研究開發工程師",
     "jobLevel": "Engineer",
@@ -419,7 +419,7 @@
   },
   {
     "timestamp": "2023/4/19 上午 2:17:26",
-    "companyName": "台塑南亞",
+    "companyName": "南亞塑膠",
     "nothing": "",
     "position": "Engineer",
     "jobLevel": "7等4",
@@ -586,25 +586,6 @@
     "jobSatisfaction": 1,
     "loading": 5,
     "supplement": "不推研發部門，其他都可以去，很好上不用擔心",
-    "companyType": "chemical"
-  },
-  {
-    "timestamp": "2023/4/15 上午 11:12:15",
-    "companyName": "永記造漆",
-    "nothing": "",
-    "position": "研發工程師",
-    "jobLevel": "副工程師",
-    "relevantExperience": 0,
-    "currentTenure": 1,
-    "monthlyBaseSalary": 2.1,
-    "monthlyBonus": "5~7",
-    "totalAnnualCompensation": 72.5,
-    "dailyAverageWorkingHours": 8,
-    "monthlyOvertime": "0(視專案而定,做不出來就只好繼續加囉)",
-    "overtimeFrequency": 3,
-    "jobSatisfaction": 3,
-    "loading": 3,
-    "supplement": "主要還是看哪一個部門，如果進到一個太賺錢的部門真的蠻累的，這邊不太調薪但生活可以，有想法的人要三思",
     "companyType": "chemical"
   },
   {
@@ -932,7 +913,7 @@
   },
   {
     "timestamp": "2023/4/16 下午 8:13:27",
-    "companyName": "南亞",
+    "companyName": "南亞塑膠",
     "nothing": "",
     "position": "業務",
     "jobLevel": "管理師",

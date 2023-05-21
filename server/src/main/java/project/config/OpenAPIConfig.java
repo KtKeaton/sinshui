@@ -14,17 +14,11 @@ public class OpenAPIConfig {
 
   private final String devUrl = "http://localhost:8080";
 
-  private final String prodUrl = "https://swag.sinshui.com";
-
   @Bean
   public OpenAPI myOpenAPI() {
     Server devServer = new Server();
     devServer.setUrl(devUrl);
     devServer.setDescription("Server URL in Development environment");
-
-    Server prodServer = new Server();
-    prodServer.setUrl(prodUrl);
-    prodServer.setDescription("Server URL in Production environment");
 
     Contact contact = new Contact();
     contact.setEmail("Email");
@@ -37,6 +31,6 @@ public class OpenAPIConfig {
         .contact(contact)
         .description("SinShui API.");
 
-    return new OpenAPI().info(info).servers(List.of(devServer, prodServer));
+    return new OpenAPI().info(info).servers(List.of(devServer));
   }
 }

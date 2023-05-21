@@ -8,18 +8,31 @@ export default defineNuxtConfig({
         lang: 'zh-TW',
       },
       meta: [
-        { name: 'author', content: 'nuxt3 by Ming ' },
-        { name: 'author', content: 'java by Amber' },
+        { name: 'author', content: 'Ming & Amber' },
         {
           name: 'description',
-          content: 'Taiwan tech salaries from Dcard."',
+          content: 'Taiwan tech salaries from Dcard.',
+        },
+        {
+          name: 'og:description',
+          content: 'Taiwan tech salaries from Dcard.',
+        },
+        {
+          property: 'image"',
+          content:
+            'https://zhong1016.github.io/software-salaries/images/money.jpg',
+        },
+        {
+          property: 'og:image"',
+          content:
+            'https://zhong1016.github.io/software-salaries/images/money.jpg',
         },
       ],
     },
   },
   runtimeConfig: {
     public: {
-      base: '',
+      base: 'http://localhost:8080',
     },
   },
 });

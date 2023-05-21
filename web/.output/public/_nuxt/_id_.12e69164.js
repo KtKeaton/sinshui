@@ -1,0 +1,1 @@
+import{b as r,t as a,c as n,o as c}from"./entry.83835b33.js";import{c as m,b as p,d as u}from"./index.vue.6729b2c0.js";import"./nuxt-link.4f3bb66b.js";import"./_plugin-vue_export-helper.c27b6911.js";const b=r({__name:"[id]",setup(_){const o=m(),t=p(),e=a(),{id:s}=e.params;return o.setPage(s),t.setDefault(),(i,f)=>(c(),n(u))}});export{b as default};

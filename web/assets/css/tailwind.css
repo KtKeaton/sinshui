@@ -28,3 +28,7 @@ html,
 ::-webkit-scrollbar {
   width: 5px;
 }
+
+.el-drawer__header {
+  margin-bottom: 0px !important;
+}

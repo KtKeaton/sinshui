@@ -37,7 +37,7 @@ public class MainServiceImpl implements MainService {
             Position position = positionService.findPositionByPositionName(positionDetailCreateRequestData.getPosition())
                     .orElseThrow(() -> new GlobalRuntimeException(ResponseCode.POSITION_NOT_FOUND_ERROR));
 
-            Company company = companyService.findCompanyByCompanyName(positionDetailCreateRequestData.getCompanyName().trim())
+            Company company = companyService.findByCompanyTypeAndCompanyName(positionDetailCreateRequestData.getCompanyType(), positionDetailCreateRequestData.getCompanyName().trim())
                     .orElseThrow(() -> new GlobalRuntimeException(ResponseCode.COMPANY_NOT_FOUND_ERROR));
 
             PositionDetail positionDetail = positionDetailMapper.requestDataToModel(positionDetailCreateRequestData);
@@ -62,7 +62,7 @@ public class MainServiceImpl implements MainService {
         Position position = positionService.findPositionByPositionName(positionDetailCreateRequestData.getPosition())
                 .orElseGet(() -> positionService.createPosition(positionDetailCreateRequestData.getPosition()));
 
-        Company company = companyService.findCompanyByCompanyName(positionDetailCreateRequestData.getCompanyName().trim())
+        Company company = companyService.findByCompanyTypeAndCompanyName(positionDetailCreateRequestData.getCompanyType(), positionDetailCreateRequestData.getCompanyName().trim())
                 .orElseGet(() -> companyService.createCompany(positionDetailCreateRequestData.getCompanyName().trim(), companyType));
 
         PositionDetail positionDetail = positionDetailMapper.requestDataToModel(positionDetailCreateRequestData);

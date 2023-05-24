@@ -26,19 +26,20 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<Company> findCompanyByCompanyName(String companyName) {
-        return companyDao.findByCompanyName(companyName);
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<String> findAllCompanyNames() {
         return companyDao.findAll().stream().map(Company::getCompanyName).toList();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<String> findByCompanyType(String companyType) {
         return companyDao.getByCompanyType(companyType).stream().map(Company::getCompanyName).toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<Company> findByCompanyTypeAndCompanyName(String companyType, String companyName) {
+        return companyDao.getByCompanyTypeAndCompanyName(companyType, companyName);
     }
 
     @Override

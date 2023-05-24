@@ -2,11 +2,11 @@ package project.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.StringUtils;
 import project.data.base.PageResponseData;
 import project.data.projection.PositionDetailProjectionData;
 import project.enums.CompanyTypeName;
@@ -35,7 +35,7 @@ public class PositionDetailServiceImpl implements PositionDetailService {
     public PageResponseData<PositionDetailProjectionData> findPositionDetails(int pageNo, int pageSize, String sort, String companyType) {
         Pageable pageable = PageUtil.getPageable(pageNo, pageSize, sort);
         Page<PositionDetailProjectionData> dataPages;
-        if (StringUtils.endsWithIgnoreCase(CompanyTypeName.ALL.getTypeName(), companyType)) {
+        if (StringUtils.equalsIgnoreCase(CompanyTypeName.ALL.getTypeName(), companyType)) {
             dataPages = positionDetailProjectionDao.getAll(pageable);
         } else {
             dataPages = positionDetailProjectionDao.getAllPositionDetails(companyType, pageable);

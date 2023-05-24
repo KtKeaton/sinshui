@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS tech_salary.company
     creation_time   DATETIME     NOT NULL DEFAULT CURRENT_TIMESTAMP,
     update_time     DATETIME ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id),
-    UNIQUE INDEX uni_idx_company_company_name (company_name),
+    UNIQUE INDEX uni_idx_company_company_name_company_type_id (company_name, company_type_id),
     FOREIGN KEY (company_type_id) REFERENCES company_type (id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4

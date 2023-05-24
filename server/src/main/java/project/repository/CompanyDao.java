@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface CompanyDao extends JpaRepository<Company, Long> {
 
-    Optional<Company> findByCompanyName(String companyName);
+    List<Company> findByCompanyName(String companyName);
 
     @Query(value = """
             SELECT c from Company c
@@ -19,5 +19,12 @@ public interface CompanyDao extends JpaRepository<Company, Long> {
             WHERE ct.typeName = ?1
             """)
     List<Company> getByCompanyType(String companyType);
+
+    @Query(value = """
+            SELECT c from Company c
+            JOIN c.companyType ct
+            WHERE ct.typeName = ?1 and c.companyName = ?2
+            """)
+    Optional<Company> getByCompanyTypeAndCompanyName(String companyType, String companyName);
 
 }

@@ -48,14 +48,6 @@ services:
     volumes:
       - ./server/log:/usr/app/log #留下log，就算container關了還是有資料存在
       - ./server/setting/json:/usr/app/setting/json
-#  redis:
-#    image: redis
-#    restart: always
-#    ports:
-#      - "6379:6379"
-#    volumes:
-#      - redis_data:/data
-
 networks:
   backend:
     driver: bridge

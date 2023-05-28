@@ -18,12 +18,12 @@ export default defineNuxtConfig({
           content: 'Taiwan tech salaries from Dcard.',
         },
         {
-          property: 'image"',
+          property: 'image',
           content:
             'https://zhong1016.github.io/software-salaries/images/money.jpg',
         },
         {
-          property: 'og:image"',
+          property: 'og:image',
           content:
             'https://zhong1016.github.io/software-salaries/images/money.jpg',
         },

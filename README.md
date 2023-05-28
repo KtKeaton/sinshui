@@ -1,11 +1,10 @@
 # Sinshui ( 薪水 )
 
-<div style="display: flex;">
+<p align="center">
     <img
-      style="margin:0 auto 8px auto"
       src="./web/public/favicon.ico"
       />
-</div>
+</p>
 <p align="center">
       <img
         src="https://img.shields.io/badge/nuxt-3.4.3-green.svg?style=plasticr"

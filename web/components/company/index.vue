@@ -41,7 +41,7 @@ onMounted(() => {
       fixed
       prop="companyName"
       label="公司"
-      width="140"
+      :width="screenWidth > 800 ? 140 : 100"
       sortable
     />
     <el-table-column
@@ -50,7 +50,7 @@ onMounted(() => {
       prop="position"
       label="職務"
       sortable
-      width="140"
+      :width="screenWidth > 800 ? 140 : 100"
     />
     <el-table-column
       v-if="columnStore.column.jobLevel.value"

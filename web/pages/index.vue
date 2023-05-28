@@ -9,5 +9,4 @@ companyStore.setDefault();
 </script>
 <template>
   <TheLayout />
-  <el-backtop :right="30" :bottom="100" />
 </template>

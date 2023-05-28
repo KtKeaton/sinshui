@@ -13,4 +13,5 @@ import TheSection from './TheSection.vue';
       <TheSection />
     </div>
   </div>
+  <el-backtop :right="30" :bottom="100" />
 </template>
